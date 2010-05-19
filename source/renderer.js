@@ -87,7 +87,7 @@ Bluff.Renderer = new JS.Class({
     text.style.top = (this._sy * y + this._top_adjustment(text, scaled_height)) + 'px';
   },
   
-  tooltip: function(left, top, width, height, name, color, data) {
+  tooltip: function(left, top, width, height, name, color, data, index, tooltips_renderer) {
     if (width < 0) left += width;
     if (height < 0) top += height;
     
@@ -103,7 +103,7 @@ Bluff.Renderer = new JS.Class({
     target.style.overflow = 'hidden';
     
     Bluff.Event.observe(target, 'mouseover', function(node) {
-      Bluff.Tooltip.show(name, color, data);
+      Bluff.Tooltip.show(name, color, data, index, tooltips_renderer);
     });
     Bluff.Event.observe(target, 'mouseout', function(node) {
       Bluff.Tooltip.hide();

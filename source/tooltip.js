@@ -18,11 +18,8 @@ Bluff.Tooltip = new JS.Singleton({
     }, this);
   },
   
-  show: function(name, color, data) {
-    data = Number(String(data).substr(0, this.DATA_LENGTH));
-    this._tip.innerHTML = '<span class="color" style="background: ' + color + ';">&nbsp;</span> ' +
-                          '<span class="label">' + name + '</span> ' +
-                          '<span class="data">' + data + '</span>';
+  show: function(name, color, data, index, tooltips_renderer) {
+    this._tip.innerHTML = tooltips_renderer(name, color, data, index);
     this._tip.style.display = '';
   },
   

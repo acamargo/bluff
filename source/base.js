@@ -198,6 +198,13 @@ Bluff.Base = new JS.Class({
   
   // Set to true to enable tooltip displays
   tooltips: false,
+
+  tooltips_renderer: function(name, color, data, index) {
+    data = Number(String(data).substr(0, Bluff.Tooltip.DATA_LENGTH));
+    return '<span class="color" style="background: ' + color + ';">&nbsp;</span> ' +
+      '<span class="label">' + name + '</span> ' +
+      '<span class="data">' + data + '</span>';
+  },
   
   // If one numerical argument is given, the graph is drawn at 4/3 ratio
   // according to the given width (800 results in 800x600, 400 gives 400x300,
@@ -864,9 +871,9 @@ Bluff.Base = new JS.Class({
   },
   
   // Creates a mouse hover target rectangle for tooltip displays
-  _draw_tooltip: function(left, top, width, height, name, color, data) {
+  _draw_tooltip: function(left, top, width, height, name, color, data, index, tooltip_renderer) {
     if (!this.tooltips) return;
-    this._d.tooltip(left, top, width, height, name, color, data);
+    this._d.tooltip(left, top, width, height, name, color, data, index, tooltip_renderer);
   },
   
   // Shows an error message because you have no data.

@@ -12,6 +12,7 @@
 </head>
 <body>
   
+  <canvas id="custom_tooltips"></canvas>
   <canvas id="animals"></canvas>
   <canvas id="xyz"></canvas>
   <canvas id="somenull"></canvas>
@@ -29,6 +30,30 @@
   
   <script type="text/javascript" language="javascript" charset="utf-8">
   window.onload = function() {
+    var g = new Bluff.Line('custom_tooltips', 400);
+    g.tooltips = true;
+    g.tooltips_renderer = function(name, color, data, index) { 
+      return '<span class="color" style="background:' + color + ';">&nbsp;</span> ' +
+        '<span class="label">' + name + '</span> ' +
+        '<span class="data">' + data + '</span> ' +
+        '<small>index='+index+'</small>';
+    }
+    g.theme_keynote();
+    g.minimum_value = 0.5;
+    g.maximum_value = 4.5;
+    g.marker_count = 4;
+    g.line_width = 1;
+    g.dot_radius = 3;
+    g.title = 'Custom Tooltips';
+    g.title_margin = 70;
+    g.data('giraffes', [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+           2.0, 2.0, 2.08, 2.04, 1.77, 2.08, 2.12]);
+    g.data('monkeys', [3.97, 2.24, 2.81, 3.2, 1.11, 2.98,
+           2.33, 1.89, 3.82, 1.34, 1.87, 1.49, 1.54, 2.45, 1.97]);
+    g.data('hippos', [0.88, 1.00, 1.00, 1.0, 1.0, 1.0, 1.0, 1.06,
+           1.17, 1.02, 1, 1.01, 1.14, 1.09]);
+    g.draw();
+
     var g = new Bluff.Line('animals', 400);
     g.tooltips = true;
     g.theme_keynote();
