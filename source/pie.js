@@ -61,7 +61,8 @@ Bluff.Pie = new JS.Class(Bluff.Base, {
             label_string;
         
         if (label_val >= this.hide_labels_less_than) {
-          label_string = this._label(data_row[this.klass.DATA_VALUES_INDEX][0]);
+          label_string = label_val+'%';
+
           this._draw_label(center_x, center_y, half_angle,
                             radius + (radius * this.klass.TEXT_OFFSET_PERCENTAGE),
                             label_string);
